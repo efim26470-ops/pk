@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детальное сравнение процессоров и апгрейд ПК</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f4fa;
+      color: #1c2b3a;
+      line-height: 1.5;
+      padding: 32px 24px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(125deg, #1d3b4f, #2c5a7a);
+      color: white;
+      padding: 32px 32px;
+    }
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .content {
+      padding: 32px;
+    }
+    h2 {
+      font-size: 1.6rem;
+      margin: 24px 0 16px 0;
+      color: #1d3b4f;
+      border-left: 4px solid #2b5f8a;
+      padding-left: 16px;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin: 20px 0 12px;
+      color: #2c5a7a;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border: 1px solid #dce5ec;
+      padding: 12px 16px;
+      text-align: center;
+      vertical-align: top;
+    }
+    th {
+      background: #e9f0f5;
+      font-weight: 700;
+    }
+    .highlight {
+      background: #e6f4f0;
+    }
+    .badge {
+      background: #2a7f6e;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .chart-box {
+      background: #f8fafc;
+      border-radius: 24px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .metric {
+      margin-bottom: 20px;
+    }
+    .metric-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .bar-bg {
+      background: #e2e8f0;
+      border-radius: 20px;
+      height: 32px;
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      background: linear-gradient(90deg, #2b5f8a, #4f8bc9);
+      width: 0%;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      animation: grow 1s ease-out forwards;
+    }
+    @keyframes grow {
+      from { width: 0; }
+      to { width: var(--w); }
+    }
+    .insight {
+      background: #eef3fc;
+      border-left: 4px solid #2b5f8a;
+      padding: 16px 20px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+    .button-close {
+      background: #2b5f8a;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.2s;
+    }
+    .button-close:hover {
+      background: #1e4a6e;
+      transform: scale(1.02);
+    }
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7e8f;
+      border-top: 1px solid #dce5ec;
+      padding-top: 24px;
+    }
+    @media (max-width: 700px) {
+      .content { padding: 20px; }
+      th, td { padding: 8px 6px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Сравнение процессоров и анализ апгрейда</h1>
+    <p>Понятные объяснения бенчмарков, реальная выгода от замены CPU и установки SSD. Почему стоит обновить систему.</p>
+  </div>
+  <div class="content">
+    <h2>Текущая сборка vs целевая конфигурация</h2>
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Компонент</th><th>Текущая система</th><th>Целевая (рекомендуемая)</th><th>Прирост</th></tr>
+        <tr><td>Процессор</td><td>Intel Core i5-12400F (6 ядер / 12 потоков)</td><td>Intel Core i7-12700KF (12 ядер / 20 потоков)</td><td>+80% в многопотоке</td></tr>
+        <tr><td>ОЗУ</td><td>32 ГБ DDR5-4800</td><td>32 ГБ DDR5-5600 (разгон)</td><td>+5-10% пропускной способности</td></tr>
+        <tr><td>Накопитель системный</td><td>NVMe 512 ГБ (система) + HDD 1 ТБ (данные)</td><td>NVMe 512 ГБ + дополнительный NVMe 1 ТБ (рабочие проекты)</td><td>Скорость доступа к проектам в 10-20 раз выше</td></tr>
+        <tr><td>Видеокарта</td><td>RTX 4060 8 ГБ</td><td>RTX 4060 8 ГБ (остаётся)</td><td>Без изменений, но процессор перестанет быть узким местом</td></tr>
+      </table>
+    </div>
+
+    <h2>Что такое бенчмарки и почему они важны?</h2>
+    <div class="insight">
+      <strong>Cinebench R23</strong> — тест, который нагружает все ядра процессора рендерингом 3D-сцены. Он показывает, насколько быстро CPU справляется с тяжёлыми вычислениями (монтаж видео, 3D-моделирование, компиляция кода).<br>
+      <strong>Geekbench 6</strong> — измеряет производительность в реальных задачах: работа с фото, шифрование, навигация в интернете. Даёт баллы для однопотоковых и многопотоковых сценариев.<br>
+      <strong>Игровой тест (FPS)</strong> — показывает среднее количество кадров в секунду в популярных играх. Процессор может ограничивать видеокарту, если он слабый.
+    </div>
+
+    <h2>Сравнение процессоров (синтетика и реальные приложения)</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Модель</th><th>Ядер/потоков</th><th>Cinebench R23 (многопоток)</th><th>Cinebench R23 (один поток)</th><th>Geekbench 6 (много/один)</th><th>Игры 1080p (относительно i5)</th><th>Цена (б/у, ориентир)</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td><strong>i5-12400F (текущий)</strong></td><td>6/12</td><td>~12400</td><td>~1730</td><td>~11500 / 2400</td><td>100% (база)</td><td>140$</td></tr>
+          <tr><td><strong>i7-12700KF</strong></td><td>12(8+4)/20</td><td>~22500 (+81%)</td><td>~1950 (+13%)</td><td>~17500 / 2650</td><td>~115% (+15%)</td><td>220$</td></tr>
+          <tr><td><strong>i5-13600KF</strong></td><td>14(6+8)/20</td><td>~24500 (+97%)</td><td>~2050 (+18%)</td><td>~19500 / 2800</td><td>~120%</td><td>250$</td></tr>
+          <tr><td><strong>Ryzen 7 7700X</strong></td><td>8/16</td><td>~19800 (+60%)</td><td>~1990 (+15%)</td><td>~16700 / 2700</td><td>~118%</td><td>280$</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Графики производительности: наглядно о приросте</h2>
+    <div class="chart-box">
+      <div class="metric">
+        <div class="metric-label"><span>Многопоточный рендеринг (Cinebench R23)</span><span>12400 → 22500 баллов</span></div>
+        <div class="bar-bg"><div class="bar" style="--w:55%">i5-12400F</div></div>
+        <div class="bar-bg" style="margin-top: 8px;"><div class="bar" style="--w:100%; background: #2a7f6e;">i7-12700KF</div></div>
+      </div>
+      <div class="metric">
+        <div class="metric-label"><span>Скорость работы с проектами (относительная)</span><span>HDD vs NVMe</span></div>
+        <div class="bar-bg"><div class="bar" style="--w:80%">HDD (медленно)</div></div>
+        <div class="bar-bg" style="margin-top: 8px;"><div class="bar" style="--w:12%; background: #2a7f6e;">NVMe SSD (быстро)</div></div>
+      </div>
+      <div class="metric">
+        <div class="metric-label"><span>Средний FPS в играх (Cyberpunk 2077, 1080p)</span><span>база vs i7</span></div>
+        <div class="bar-bg"><div class="bar" style="--w:87%">i5-12400F (87 FPS)</div></div>
+        <div class="bar-bg" style="margin-top: 8px;"><div class="bar" style="--w:100%; background: #2a7f6e;">i7-12700KF (100 FPS)</div></div>
+      </div>
+    </div>
+
+    <h2>Почему апгрейд имеет смысл? (развёрнутое обоснование)</h2>
+    <div class="insight">
+      <p>🔹 <strong>SSD вместо HDD для рабочих файлов</strong> — самый ощутимый апгрейд. HDD выдаёт 80-120 МБ/с, а современный NVMe SSD — 3000-5000 МБ/с. Разница в 30-50 раз! Это значит: проекты в Photoshop или IDE будут открываться за 2 секунды вместо 20, копирование гигабайтов файлов — за несколько секунд вместо минуты.</p>
+      <p>🔹 <strong>Смена процессора с i5 на i7</strong> — добавляет 8 дополнительных энергоэффективных ядер и увеличивает общее количество потоков с 12 до 20. В многозадачных сценариях (компиляция + браузер + музыка + видеозвонок) система не будет тормозить. В рендеринге видео прирост — почти вдвое. Для учёбы и работы с виртуальными машинами — принципиально важно.</p>
+      <p>🔹 <strong>Платформа уже готова</strong>: материнская плата B760 поддерживает процессоры 12, 13 и даже 14-го поколения, блок питания 800 Вт имеет запас. Установка i7-12700KF не требует замены материнской платы или охлаждения (башенный кулер справится).</p>
+      <p>🔹 <strong>Соотношение цена/производительность</strong>: i7-12700KF стоит около 220$ (б/у) и даёт почти удвоение многопоточной мощности. i5-13600KF ещё быстрее, но дороже. Оптимальный выбор для бюджета — i7.</p>
+    </div>
+
+    <h2>Итоговая рекомендация</h2>
+    <div class="insight" style="background: #e6f4e6; border-left-color: #2a7f6e;">
+      <strong>1 этап (ближайший, 50-80$)</strong> — докупить NVMe SSD на 512 ГБ или 1 ТБ. Перенести на него все рабочие проекты и часто используемые программы. Результат: ускорение в повседневных задачах в 3-5 раз, исчезновение микрозадержек.<br>
+      <strong>2 этап (через 3-6 месяцев, ~220$)</strong> — замена процессора на i7-12700KF (предварительно обновив BIOS материнской платы). Продажа старого i5-12400F снизит затраты до ~150$. Прирост в тяжёлых задачах — до 80%, в играх — стабильные 100+ FPS в любых проектах.<br>
+      <strong>Бонус</strong> — разогнать память до 5600 МТ/с (если поддерживается) для дополнительных 5-7% производительности.
+    </div>
+
+    <div style="text-align: center; margin-top: 32px;">
+      <button class="button-close" onclick="window.close()">Закрыть страницу</button>
+    </div>
+    <div class="footer">
+      Данные бенчмарков обобщены из открытых источников (Cinebench R23, Geekbench 6, обзоры Gamers Nexus, TechSpot). Реальные результаты могут незначительно варьироваться в зависимости от охлаждения и материнской платы.
+    </div>
+  </div>
+</div>
+<script>
+  // Запрет копирования
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('keydown', e => { if(e.ctrlKey && (e.key === 'c' || e.key === 'C')) e.preventDefault(); });
+  // Анимация баров не требует доп. кода, работает через CSS custom properties
+</script>
+</body>
+</html>
