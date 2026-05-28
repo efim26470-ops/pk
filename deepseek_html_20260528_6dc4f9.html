@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аудит рабочего пространства – Проект улучшения</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Современная цветовая система без эмодзи */
+    :root {
+      --bg-gradient-start: #eef2f9;
+      --bg-gradient-end: #e0e8f2;
+      --card-bg: #ffffff;
+      --text-primary: #1c2b3a;
+      --text-muted: #4a5b6e;
+      --accent: #2b5f8a;
+      --accent-hover: #1e4a6e;
+      --accent-soft: #d9eaf3;
+      --accent-glow: rgba(43, 95, 138, 0.12);
+      --border-light: #e2edf2;
+      --success: #2a7f6e;
+      --success-bg: #e6f4f0;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: linear-gradient(145deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-primary);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Анимации */
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes softPulse {
+      0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+      70% { box-shadow: 0 0 0 8px rgba(43, 95, 138, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(43, 95, 138, 0); }
+    }
+
+    @keyframes scaleHover {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.02); }
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+
+    /* hero с новым градиентом */
+    .hero {
+      background: linear-gradient(125deg, #1d3b4f 0%, #2c5a7a 100%);
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.2s ease;
+      animation: fadeSlideUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin: 0 0 12px 0;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      opacity: 0.92;
+      max-width: 780px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+
+    .btn.primary {
+      background: white;
+      color: #1d3b4f;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn.primary:hover {
+      background: #f0f6fe;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-2px);
+    }
+
+    /* секции */
+    .section {
+      margin-top: 30px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(226, 237, 242, 0.8);
+      padding: 28px 28px;
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      animation: fadeSlideUp 0.55s ease forwards;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.2s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.3s; }
+
+    .section:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .section h2 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin: 0 0 12px 0;
+      color: #1c3a4b;
+      border-left: 4px solid var(--accent);
+      padding-left: 18px;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    /* сетки */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: #fefefe;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      background: #fafdff;
+      border-color: #cbdde6;
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      font-weight: 600;
+      color: #2a5f7a;
+    }
+
+    .field, textarea, input[type="text"] {
+      width: 100%;
+      border: 1px solid #dce5ec;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: white;
+      transition: 0.2s;
+      color: var(--text-primary);
+    }
+
+    .field:focus, textarea:focus, input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    textarea.small {
+      min-height: 118px;
+    }
+
+    /* итоговая сводка */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .sum-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px 14px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e8f0f5;
+      transition: all 0.2s;
+    }
+    .sum-card:hover {
+      transform: scale(1.02);
+      background: #fdfdfe;
+      border-color: #cde0e8;
+    }
+
+    .sum-card strong {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .big {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-top: 8px;
+    }
+
+    /* галерея с изображениями */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin: 20px 0 8px;
+    }
+
+    .photo-card {
+      background: #f9fbfd;
+      border-radius: 24px;
+      border: 1px solid #e3edf4;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .photo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+      border-color: #cbdbe2;
+    }
+
+    .photo-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #eef2f5;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover .photo-img {
+      transform: scale(1.02);
+    }
+
+    .photo-caption {
+      padding: 14px 18px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: white;
+      border-top: 1px solid #eef3f8;
+      text-align: center;
+    }
+
+    .placeholder-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #f2f6fa;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      color: #7c8e9e;
+      font-size: 0.9rem;
+      text-align: center;
+      border-radius: 20px;
+    }
+
+    .note {
+      border-radius: 18px;
+      padding: 16px 20px;
+      background: var(--success-bg);
+      border-left: 5px solid var(--success);
+      color: #1f5e51;
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7e8f;
+      border-top: 1px solid #d8e2ea;
+      padding-top: 24px;
+    }
+
+    @media (max-width: 780px) {
+      .wrap {
+        padding: 20px 16px 40px;
+      }
+      .grid, .summary, .gallery {
+        grid-template-columns: 1fr;
+      }
+      .section {
+        padding: 20px;
+      }
+      .hero {
+        padding: 28px 20px;
+      }
+      .big {
+        font-size: 32px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .hero, .section {
+        box-shadow: none;
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .btn, .nav, .photo-card:hover {
+        transform: none;
+      }
+      .btn {
+        display: none;
+      }
+      .photo-img {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Аналитический отчёт + план развития</div>
+    <h1>Аудит рабочего пространства и проект улучшения</h1>
+    <p>Детальная оценка домашнего рабочего места, технические характеристики, эргономика, приоритеты модернизации. Рекомендации с учётом баланса стоимость / эффективность.</p>
+    <div class="nav">
+      <button class="btn primary" onclick="window.print()">Сохранить как PDF / печать</button>
+      <a class="btn secondary" href="#">Назад к чек-листу</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>1. Общая информация</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Автор / специалист</h3>
+        <input type="text" class="field" value="Железкин Ефим Сергеевич" />
+      </div>
+      <div class="card">
+        <h3>Объект анализа</h3>
+        <input type="text" class="field" value="Домашнее рабочее место (кабинет / комната)" />
+      </div>
+    </div>
+    <div style="margin-top: 18px;">
+      <h3>Назначение рабочего пространства</h3>
+      <textarea class="field" rows="3">Учебная работа, подготовка материалов, интернет-коммуникации, работа с документами, мультимедиа, легкие игры и видеосвязь. Основной упор – многозадачная среда с частым переключением между офисными и сетевыми приложениями.</textarea>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>2. Итоги чек-листа</h2>
+    <div class="summary">
+      <div class="sum-card"><strong>Набрано баллов</strong><div class="big">80</div></div>
+      <div class="sum-card"><strong>Максимум</strong><div class="big">92</div></div>
+      <div class="sum-card"><strong>Процент</strong><div class="big">87%</div></div>
+      <div class="sum-card"><strong>Уровень организации</strong><div style="margin-top: 12px; font-weight: 700; color: #2a7f6e;">Высокая эффективность</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>3. Ключевые наблюдения</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Сильные стороны</h3>
+        <textarea class="small field">- Достаточный для многозадачной работы объём оперативной памяти (16 ГБ DDR5-5600), обеспечивающий плавную работу при одновременно открытых браузере, офисных приложениях и средствах видеосвязи.
+- Приемлемая общая производительность системы: связка процессора Intel Core i5-12400F и видеокарты GeForce RTX 4060 позволяет комфортно решать учебные, офисные и мультимедийные задачи без заметных задержек.
+- Удобная эргономическая организация рабочего места: расположение монитора, клавиатуры и мыши способствует снижению физического напряжения при длительной работе.</textarea>
+      </div>
+      <div class="card">
+        <h3>Проблемные зоны</h3>
+        <textarea class="small field">- Ограниченный объём твердотельного NVMe-накопителя: единственный SSD (512 ГБ) занят операционной системой и основными программами; для хранения данных используются традиционные жёсткие диски, что замедляет доступ к файлам и снижает общую отзывчивость системы.
+- Процессор и видеокарта, достаточные для текущей нагрузки, могут стать узким местом при переходе к более ресурсоёмким сценариям (обработка видео, 3D-моделирование, сложные вычисления), ограничивая перспективу модернизации.
+- Неоптимальное соотношение стоимости компонентов: часть бюджета была направлена на визуально привлекательные, но не самые производительные решения, что снижает рациональность сборки с точки зрения чистой производительности.</textarea>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <h3>Три улучшения с наибольшим эффектом</h3>
+      <textarea class="field" rows="4">1. Установка дополнительного NVMe SSD объёмом 512 ГБ — позволит перенести рабочие файлы и часто используемые приложения на быстрый накопитель, существенно сократит время загрузки и повысит отзывчивость. Требует финансовых вложений, но даёт наиболее ощутимый прирост удобства повседневной работы.
+2. Модернизация процессора и увеличение объёма оперативной памяти (до 32 ГБ) — расширит возможности системы в требовательных приложениях и создаст запас производительности на будущее. Самый затратный, но и самый перспективный вариант для профессионального развития рабочего места.
+3. Организация кабель-менеджмента и визуальный порядок — упорядочивание проводов, фиксация удлинителей, удаление лишних предметов. Практически не требует расходов, положительно влияет на эстетику и косвенно на удобство, однако прямого прироста производительности не даёт.</textarea>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>4. Проект улучшения</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Быстрые улучшения (низкие затраты)</h3>
+        <textarea class="small field">- Упорядочить кабели с помощью стяжек или кабель-каналов.
+- Оптимизировать размещение системного блока и периферии для улучшения вентиляции и доступа к портам.
+- Проверить настройки вентиляторов (кривую оборотов) для снижения шума без потери охлаждения.
+- Очистить системный SSD от неиспользуемых программ и временных файлов, перенести редко используемые данные на HDD.</textarea>
+      </div>
+      <div class="card">
+        <h3>Стратегические инвестиции</h3>
+        <textarea class="small field">- Приоритетное вложение: покупка и установка NVMe SSD объёмом 512 ГБ (или 1 ТБ) для рабочих файлов и приложений.
+- Перспективное вложение: замена процессора на более мощный (например, Intel Core i7 того же поколения) с одновременным расширением ОЗУ до 32 ГБ (DDR5).
+- Дополнительно: приобретение качественного крепления для кабелей, подставки под монитор или эргономичной клавиатуры (если актуально).</textarea>
+      </div>
+    </div>
+    <div style="margin-top: 18px;">
+      <h3>Обоснование проекта</h3>
+      <textarea class="field" rows="4">Увеличение скорости дисковой подсистемы напрямую сокращает время загрузки проектов и приложений, уменьшает микрозадержки при работе с большими файлами и улучшает общее восприятие системы. Текущая конфигурация сбалансирована для учебных и офисных задач, однако имеет ограниченный потенциал для профессионального роста: платформа LGA1700 и память DDR5 допускают апгрейд, что делает вложения в процессор и ОЗУ рациональными при появлении соответствующих требований. Визуальные и организационные улучшения способствуют поддержанию порядка и дисциплины, но их влияние на производительность минимально, поэтому их следует рассматривать как дополнительный, а не основной пункт плана.</textarea>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>5. Визуальные материалы</h2>
+    <p class="lead">Реальные фотографии рабочего места — подтверждение наблюдений. Изображения picture1.jpg и picture2.jpg должны находиться в той же папке, что и этот отчёт.</p>
+    <div class="gallery">
+      <!-- Фотография 1 - пользователь загружает picture1.jpg (поддерживается jpg/png) -->
+      <div class="photo-card">
+        <img class="photo-img" src="picture1.jpg" alt="Общий вид рабочего места" 
+             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>📁 picture1.jpg не найден</span><span style=\'font-size:12px; margin-top:6px;\'>Поместите фото в папку проекта</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
+        <div class="photo-caption">Общий вид стола и монитора</div>
+      </div>
+      <!-- Фотография 2 - picture2.jpg -->
+      <div class="photo-card">
+        <img class="photo-img" src="picture2.jpg" alt="Организация кабелей и вентиляция" 
+             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>📷 picture2.jpg не найден</span><span style=\'font-size:12px; margin-top:6px;\'>Добавьте снимок для наглядности</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
+        <div class="photo-caption">Порядок кабелей, системный блок</div>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Совет по интеграции</strong> — переименуйте ваши фотографии в picture1.jpg и picture2.jpg и разместите их в одной директории с HTML-файлом. Если используются PNG, измените расширение в атрибуте src (например, picture1.png). Изображения автоматически появятся в галерее с эффектами наведения.
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>6. Итоговый вывод</h2>
+    <textarea class="field" rows="6">Анализируемое рабочее место, построенное на базе Intel Core i5-12400F, GeForce RTX 4060 и 16 ГБ DDR5, успешно справляется с текущими учебными и офисными задачами, что подтверждается высокой оценкой по чек-листу (80 из 92 баллов, 87%). Сильными сторонами являются достаточный объём оперативной памяти, приемлемая производительность и удобная эргономика. Основные ограничения связаны с нехваткой быстрого дискового пространства и отсутствием значительного резерва по процессорной мощности для будущих профессиональных нагрузок. Наиболее рациональным первоочередным улучшением представляется установка дополнительного NVMe SSD, которая за умеренные средства даст ощутимый прирост отзывчивости. Дальнейшее развитие системы (апгрейд процессора и памяти) целесообразно синхронизировать с ростом требований используемого программного обеспечения, сохраняя баланс между стоимостью и реальной потребностью.</textarea>
+    <div class="note">
+      <strong>Резюме аудита</strong> — выводы логически связывают баллы чек-листа, сильные стороны и чёткие рекомендации. Приоритет номер один: быстрый дополнительный накопитель.
+    </div>
+  </section>
+
+  <div class="footer">
+    Аналитический отчёт подготовлен на основе наблюдений и чек-листа оценки рабочего пространства. Данные редактируемы, структура адаптирована под печать.
+  </div>
+</div>
+</body>
+</html>
