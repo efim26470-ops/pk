@@ -9,18 +9,15 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      user-select: none; /* запрет выделения и копирования текста */
+      user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
-
-    /* Запрет копирования через JS (дубль) */
     body {
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
-
     :root {
       --bg-gradient-start: #eef2f9;
       --bg-gradient-end: #e0e8f2;
@@ -40,7 +37,6 @@
       --radius-lg: 20px;
       --radius-md: 16px;
     }
-
     body {
       margin: 0;
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
@@ -49,34 +45,23 @@
       line-height: 1.5;
       scroll-behavior: smooth;
     }
-
     @keyframes fadeSlideUp {
-      0% {
-        opacity: 0;
-        transform: translateY(28px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(28px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-
     .wrap {
       max-width: 1180px;
       margin: 0 auto;
       padding: 32px 24px 60px;
     }
-
     .hero {
       background: linear-gradient(125deg, #1d3b4f 0%, #2c5a7a 100%);
       color: white;
       border-radius: var(--radius-xl);
       padding: 36px 32px;
       box-shadow: var(--shadow-md);
-      transition: all 0.2s ease;
       animation: fadeSlideUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
     }
-
     .eyebrow {
       display: inline-block;
       padding: 6px 14px;
@@ -89,7 +74,6 @@
       margin-bottom: 18px;
       border: 1px solid rgba(255, 255, 255, 0.25);
     }
-
     h1 {
       font-size: clamp(30px, 5vw, 48px);
       font-weight: 700;
@@ -97,20 +81,17 @@
       letter-spacing: -0.01em;
       margin: 0 0 12px 0;
     }
-
     .hero p {
       font-size: 1.05rem;
       opacity: 0.92;
       max-width: 780px;
     }
-
     .nav {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 24px;
     }
-
     .btn {
       text-decoration: none;
       display: inline-flex;
@@ -125,30 +106,34 @@
       border: none;
       background: transparent;
     }
-
     .btn.primary {
       background: white;
       color: #1d3b4f;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
-
     .btn.primary:hover {
       background: #f0f6fe;
       transform: translateY(-2px);
       box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
     }
-
     .btn.secondary {
       background: rgba(255, 255, 255, 0.12);
       color: white;
       border: 1px solid rgba(255, 255, 255, 0.28);
     }
-
     .btn.secondary:hover {
       background: rgba(255, 255, 255, 0.22);
       transform: translateY(-2px);
     }
-
+    .btn.special {
+      background: rgba(255, 255, 255, 0.22);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .btn.special:hover {
+      background: rgba(255, 255, 255, 0.32);
+      transform: translateY(-2px);
+    }
     .section {
       margin-top: 30px;
       background: var(--card-bg);
@@ -161,18 +146,15 @@
       opacity: 0;
       animation-fill-mode: forwards;
     }
-
     .section:nth-child(1) { animation-delay: 0.05s; }
     .section:nth-child(2) { animation-delay: 0.1s; }
     .section:nth-child(3) { animation-delay: 0.15s; }
     .section:nth-child(4) { animation-delay: 0.2s; }
     .section:nth-child(5) { animation-delay: 0.25s; }
     .section:nth-child(6) { animation-delay: 0.3s; }
-
     .section:hover {
       box-shadow: var(--shadow-md);
     }
-
     .section h2 {
       font-size: 1.9rem;
       font-weight: 600;
@@ -182,13 +164,11 @@
       border-left: 4px solid var(--accent);
       padding-left: 18px;
     }
-
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 22px;
     }
-
     .card {
       background: #fefefe;
       border: 1px solid var(--border-light);
@@ -196,21 +176,17 @@
       padding: 20px;
       transition: all 0.2s;
     }
-
     .card:hover {
       background: #fafdff;
       border-color: #cbdde6;
       transform: translateY(-3px);
     }
-
     .card h3 {
       font-size: 1.3rem;
       margin-bottom: 14px;
       font-weight: 600;
       color: #2a5f7a;
     }
-
-    /* Статические текстовые поля вместо редактируемых */
     .static-text {
       background: #f9fbfd;
       border: 1px solid #e2edf2;
@@ -224,14 +200,12 @@
       word-break: break-word;
       width: 100%;
     }
-
     .summary {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
       margin-top: 12px;
     }
-
     .sum-card {
       background: #ffffff;
       border-radius: 20px;
@@ -246,15 +220,6 @@
       background: #fdfdfe;
       border-color: #cde0e8;
     }
-
-    .sum-card strong {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-    }
-
     .big {
       font-size: 42px;
       font-weight: 800;
@@ -262,42 +227,30 @@
       line-height: 1.1;
       margin-top: 8px;
     }
-
     .gallery {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 28px;
       margin: 20px 0 8px;
     }
-
     .photo-card {
       background: #f9fbfd;
       border-radius: 24px;
       border: 1px solid #e3edf4;
       overflow: hidden;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.02);
     }
-
     .photo-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
-      border-color: #cbdbe2;
+      box-shadow: var(--shadow-md);
     }
-
     .photo-img {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       display: block;
       background: #eef2f5;
-      transition: transform 0.4s ease;
     }
-
-    .photo-card:hover .photo-img {
-      transform: scale(1.02);
-    }
-
     .photo-caption {
       padding: 14px 18px;
       font-weight: 500;
@@ -307,7 +260,6 @@
       border-top: 1px solid #eef3f8;
       text-align: center;
     }
-
     .placeholder-fallback {
       display: flex;
       align-items: center;
@@ -321,7 +273,6 @@
       text-align: center;
       border-radius: 20px;
     }
-
     .footer {
       margin-top: 32px;
       text-align: center;
@@ -330,44 +281,18 @@
       border-top: 1px solid #d8e2ea;
       padding-top: 24px;
     }
-
     @media (max-width: 780px) {
-      .wrap {
-        padding: 20px 16px 40px;
-      }
-      .grid, .summary, .gallery {
-        grid-template-columns: 1fr;
-      }
-      .section {
-        padding: 20px;
-      }
-      .hero {
-        padding: 28px 20px;
-      }
-      .big {
-        font-size: 32px;
-      }
+      .wrap { padding: 20px 16px 40px; }
+      .grid, .summary, .gallery { grid-template-columns: 1fr; }
+      .section { padding: 20px; }
+      .hero { padding: 28px 20px; }
+      .big { font-size: 32px; }
     }
-
     @media print {
-      body {
-        background: white;
-      }
-      .hero, .section {
-        box-shadow: none;
-        animation: none;
-        opacity: 1;
-        transform: none;
-      }
-      .btn, .nav, .photo-card:hover {
-        transform: none;
-      }
-      .btn {
-        display: none;
-      }
-      .photo-img {
-        break-inside: avoid;
-      }
+      body { background: white; }
+      .hero, .section { box-shadow: none; animation: none; opacity: 1; transform: none; }
+      .btn, .nav { display: none; }
+      .photo-img { break-inside: avoid; }
     }
   </style>
 </head>
@@ -376,10 +301,11 @@
   <section class="hero">
     <div class="eyebrow">Аналитический отчёт + план развития</div>
     <h1>Аудит рабочего пространства и проект улучшения</h1>
-    <p>Детальная оценка домашнего рабочего места, технические характеристики, эргономика, приоритеты модернизации. Рекомендации с учётом баланса стоимость / эффективность.</p>
+    <p>Детальная оценка домашнего рабочего места, технические характеристики, эргономика, приоритеты модернизации.</p>
     <div class="nav">
       <button class="btn primary" onclick="window.print()">Сохранить как PDF / печать</button>
       <a class="btn secondary" href="https://github.com/efim26470-ops" target="_blank" rel="noopener noreferrer">GitHub профиль</a>
+      <button class="btn special" onclick="window.open('compare.html', '_blank');">Сравнение ПК и апгрейд</button>
     </div>
   </section>
 
@@ -425,7 +351,7 @@
     </div>
     <div style="margin-top: 20px;">
       <h3>Три улучшения с наибольшим эффектом</h3>
-      <div class="static-text">1. Установка дополнительного NVMe SSD объёмом 512 ГБ — позволит перенести рабочие файлы и часто используемые приложения на быстрый накопитель, существенно сократит время загрузки и повысит отзывчивость. Требует финансовых вложений, но даёт наиболее ощутимый прирост удобства повседневной работы.<br>2. Модернизация процессора и увеличение объёма оперативной памяти (до 32 ГБ) — расширит возможности системы в требовательных приложениях и создаст запас производительности на будущее. Самый затратный, но и самый перспективный вариант для профессионального развития рабочего места.<br>3. Организация кабель-менеджмента и визуальный порядок — упорядочивание проводов, фиксация удлинителей, удаление лишних предметов. Практически не требует расходов, положительно влияет на эстетику и косвенно на удобство, однако прямого прироста производительности не даёт.</div>
+      <div class="static-text">1. Установка дополнительного NVMe SSD объёмом 512 ГБ — позволит перенести рабочие файлы и часто используемые приложения на быстрый накопитель, существенно сократит время загрузки и повысит отзывчивость.<br>2. Модернизация процессора и увеличение объёма оперативной памяти (до 32 ГБ) — расширит возможности системы в требовательных приложениях.<br>3. Организация кабель-менеджмента и визуальный порядок — упорядочивание проводов, положительно влияет на эстетику.</div>
     </div>
   </section>
 
@@ -434,16 +360,16 @@
     <div class="grid">
       <div class="card">
         <h3>Быстрые улучшения (низкие затраты)</h3>
-        <div class="static-text">- Упорядочить кабели с помощью стяжек или кабель-каналов.<br>- Оптимизировать размещение системного блока и периферии для улучшения вентиляции и доступа к портам.<br>- Проверить настройки вентиляторов (кривую оборотов) для снижения шума без потери охлаждения.<br>- Очистить системный SSD от неиспользуемых программ и временных файлов, перенести редко используемые данные на HDD.</div>
+        <div class="static-text">- Упорядочить кабели с помощью стяжек или кабель-каналов.<br>- Оптимизировать размещение системного блока для улучшения вентиляции.<br>- Очистить системный SSD от неиспользуемых программ, перенести редко используемые данные на HDD.</div>
       </div>
       <div class="card">
         <h3>Стратегические инвестиции</h3>
-        <div class="static-text">- Приоритетное вложение: покупка и установка NVMe SSD объёмом 512 ГБ (или 1 ТБ) для рабочих файлов и приложений.<br>- Перспективное вложение: замена процессора на более мощный (например, Intel Core i7 того же поколения) с одновременным расширением ОЗУ до 32 ГБ (DDR5).<br>- Дополнительно: приобретение качественного крепления для кабелей, подставки под монитор или эргономичной клавиатуры (если актуально).</div>
+        <div class="static-text">- Приоритет: покупка NVMe SSD 512 ГБ – 1 ТБ.<br>- Перспективное вложение: замена процессора на i7-12700KF (или i7-13700F) с расширением ОЗУ до 32 ГБ.</div>
       </div>
     </div>
     <div style="margin-top: 18px;">
       <h3>Обоснование проекта</h3>
-      <div class="static-text">Увеличение скорости дисковой подсистемы напрямую сокращает время загрузки проектов и приложений, уменьшает микрозадержки при работе с большими файлами и улучшает общее восприятие системы. Текущая конфигурация сбалансирована для учебных и офисных задач, однако имеет ограниченный потенциал для профессионального роста: платформа LGA1700 и память DDR5 допускают апгрейд, что делает вложения в процессор и ОЗУ рациональными при появлении соответствующих требований. Визуальные и организационные улучшения способствуют поддержанию порядка и дисциплины, но их влияние на производительность минимально, поэтому их следует рассматривать как дополнительный, а не основной пункт плана.</div>
+      <div class="static-text">Увеличение скорости дисковой подсистемы напрямую сокращает время загрузки проектов и приложений. Текущая конфигурация сбалансирована, но платформа LGA1700 и память DDR5 допускают апгрейд. Вложения в процессор и ОЗУ рациональны при появлении профессиональных требований.</div>
     </div>
   </section>
 
@@ -452,45 +378,32 @@
     <div class="gallery">
       <div class="photo-card">
         <img class="photo-img" src="picture1.png" alt="Общий вид рабочего места" 
-             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>Изображение picture1.png не найдено</span><span style=\'font-size:12px; margin-top:6px;\'>Проверьте имя файла и папку</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
+             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>picture1.png не найден</span><span style=\'font-size:12px; margin-top:6px;\'>Поместите фото</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
         <div class="photo-caption">Общий вид стола и монитора</div>
       </div>
       <div class="photo-card">
-        <img class="photo-img" src="picture2.png" alt="Организация кабелей и вентиляция" 
-             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>Изображение picture2.png не найдено</span><span style=\'font-size:12px; margin-top:6px;\'>Добавьте снимок с точным именем</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
+        <img class="photo-img" src="picture2.png" alt="Организация кабелей" 
+             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>picture2.png не найден</span><span style=\'font-size:12px; margin-top:6px;\'>Добавьте снимок</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
         <div class="photo-caption">Порядок кабелей, системный блок</div>
       </div>
     </div>
-    <!-- Удалён блок с советом по интеграции -->
   </section>
 
   <section class="section">
     <h2>6. Итоговый вывод</h2>
-    <div class="static-text">Анализируемое рабочее место, построенное на базе Intel Core i5-12400F, GeForce RTX 4060 и 16 ГБ DDR5, успешно справляется с текущими учебными и офисными задачами, что подтверждается высокой оценкой по чек-листу (80 из 92 баллов, 87%). Сильными сторонами являются достаточный объём оперативной памяти, приемлемая производительность и удобная эргономика. Основные ограничения связаны с нехваткой быстрого дискового пространства и отсутствием значительного резерва по процессорной мощности для будущих профессиональных нагрузок. Наиболее рациональным первоочередным улучшением представляется установка дополнительного NVMe SSD, которая за умеренные средства даст ощутимый прирост отзывчивости. Дальнейшее развитие системы (апгрейд процессора и памяти) целесообразно синхронизировать с ростом требований используемого программного обеспечения, сохраняя баланс между стоимостью и реальной потребностью.</div>
-    <!-- Удалён блок с резюме аудита -->
+    <div class="static-text">Анализируемое рабочее место успешно справляется с текущими задачами (80 из 92 баллов). Основные ограничения: нехватка быстрого дискового пространства и резерва процессорной мощности. Наиболее рациональное первоочередное улучшение – установка дополнительного NVMe SSD.</div>
   </section>
 
   <div class="footer">
-    Аналитический отчёт подготовлен на основе наблюдений и чек-листа оценки рабочего пространства. Данные представлены в статическом виде.
+    Аналитический отчёт. Детальное сравнение процессоров и обоснование апгрейда – на отдельной странице по кнопке выше.
   </div>
 </div>
-
 <script>
-  // Дополнительная защита от копирования
   document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'x' || e.key === 'X')) {
-      e.preventDefault();
-      return false;
-    }
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'x' || e.key === 'X')) e.preventDefault();
   });
-  document.addEventListener('copy', function(e) {
-    e.preventDefault();
-    return false;
-  });
-  document.addEventListener('cut', function(e) {
-    e.preventDefault();
-    return false;
-  });
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
 </script>
 </body>
 </html>
