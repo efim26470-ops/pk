@@ -490,23 +490,23 @@
 
   <section class="section">
     <h2>5. Визуальные материалы</h2>
-    <p class="lead">Реальные фотографии рабочего места — подтверждение наблюдений. Изображения picture1.jpg и picture2.jpg должны находиться в той же папке, что и этот отчёт.</p>
+    <p class="lead">Реальные фотографии рабочего места — подтверждение наблюдений. Изображения picture1.png и picture2.png уже загружены в ту же папку, что и этот отчёт.</p>
     <div class="gallery">
-      <!-- Фотография 1 - пользователь загружает picture1.jpg (поддерживается jpg/png) -->
+      <!-- Фотография 1 - picture1.png -->
       <div class="photo-card">
-        <img class="photo-img" src="picture1.jpg" alt="Общий вид рабочего места" 
-             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>📁 picture1.jpg не найден</span><span style=\'font-size:12px; margin-top:6px;\'>Поместите фото в папку проекта</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
+        <img class="photo-img" src="picture1.png" alt="Общий вид рабочего места" 
+             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>Изображение picture1.png не найдено</span><span style=\'font-size:12px; margin-top:6px;\'>Проверьте имя файла и папку</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
         <div class="photo-caption">Общий вид стола и монитора</div>
       </div>
-      <!-- Фотография 2 - picture2.jpg -->
+      <!-- Фотография 2 - picture2.png -->
       <div class="photo-card">
-        <img class="photo-img" src="picture2.jpg" alt="Организация кабелей и вентиляция" 
-             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>📷 picture2.jpg не найден</span><span style=\'font-size:12px; margin-top:6px;\'>Добавьте снимок для наглядности</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
+        <img class="photo-img" src="picture2.png" alt="Организация кабелей и вентиляция" 
+             onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\'placeholder-fallback\'><span>Изображение picture2.png не найдено</span><span style=\'font-size:12px; margin-top:6px;\'>Добавьте снимок с точным именем</span></div>' + this.parentElement.querySelector('.photo-caption').outerHTML;">
         <div class="photo-caption">Порядок кабелей, системный блок</div>
       </div>
     </div>
     <div class="note">
-      <strong>Совет по интеграции</strong> — переименуйте ваши фотографии в picture1.jpg и picture2.jpg и разместите их в одной директории с HTML-файлом. Если используются PNG, измените расширение в атрибуте src (например, picture1.png). Изображения автоматически появятся в галерее с эффектами наведения.
+      <strong>Файлы подключены</strong> — сейчас фотографии загружаются как picture1.png и picture2.png. Если вы переименовали файлы, убедитесь, что в атрибутах src указаны точные имена. При необходимости замените расширение на .jpg или .jpeg.
     </div>
   </section>
 
