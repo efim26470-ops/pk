@@ -104,6 +104,7 @@
       border-radius: 20px;
       height: 32px;
       overflow: hidden;
+      margin-bottom: 8px;
     }
     .bar {
       height: 100%;
@@ -202,17 +203,18 @@
       <div class="metric">
         <div class="metric-label"><span>Многопоточный рендеринг (Cinebench R23)</span><span>12400 → 22500 баллов</span></div>
         <div class="bar-bg"><div class="bar" style="--w:55%">i5-12400F</div></div>
-        <div class="bar-bg" style="margin-top: 8px;"><div class="bar" style="--w:100%; background: #2a7f6e;">i7-12700KF</div></div>
+        <div class="bar-bg"><div class="bar" style="--w:100%; background: #2a7f6e;">i7-12700KF</div></div>
       </div>
       <div class="metric">
-        <div class="metric-label"><span>Скорость работы с проектами (относительная)</span><span>HDD vs NVMe</span></div>
-        <div class="bar-bg"><div class="bar" style="--w:80%">HDD (медленно)</div></div>
-        <div class="bar-bg" style="margin-top: 8px;"><div class="bar" style="--w:12%; background: #2a7f6e;">NVMe SSD (быстро)</div></div>
+        <div class="metric-label"><span>Относительная скорость доступа к данным</span><span>HDD 12% vs NVMe 100%</span></div>
+        <div class="bar-bg"><div class="bar" style="--w:12%; background: #b91c1c;">HDD (медленно)</div></div>
+        <div class="bar-bg"><div class="bar" style="--w:100%; background: #2a7f6e;">NVMe SSD (быстро)</div></div>
+        <div style="font-size:0.8rem; margin-top:6px;">* NVMe до 5000 МБ/с, HDD ~120 МБ/с — разница в 40+ раз</div>
       </div>
       <div class="metric">
         <div class="metric-label"><span>Средний FPS в играх (Cyberpunk 2077, 1080p)</span><span>база vs i7</span></div>
         <div class="bar-bg"><div class="bar" style="--w:87%">i5-12400F (87 FPS)</div></div>
-        <div class="bar-bg" style="margin-top: 8px;"><div class="bar" style="--w:100%; background: #2a7f6e;">i7-12700KF (100 FPS)</div></div>
+        <div class="bar-bg"><div class="bar" style="--w:100%; background: #2a7f6e;">i7-12700KF (100 FPS)</div></div>
       </div>
     </div>
 
@@ -240,10 +242,8 @@
   </div>
 </div>
 <script>
-  // Запрет копирования
   document.addEventListener('copy', e => e.preventDefault());
   document.addEventListener('keydown', e => { if(e.ctrlKey && (e.key === 'c' || e.key === 'C')) e.preventDefault(); });
-  // Анимация баров не требует доп. кода, работает через CSS custom properties
 </script>
 </body>
 </html>
